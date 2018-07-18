@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('switchlanguage/{language}', 'ChangeLanguageController@switchLanguage')->name('switchlanguage');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'lang'], function() {
+    Route::resource('/task', 'TaskController');
 });
